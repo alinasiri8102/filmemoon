@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const CLIENT = process.env.CLIENT;
 
 //New imports
 const http = require("http").Server(app);
 const cors = require("cors");
 const socketIO = require("socket.io")(http, {
   cors: {
-    origin: process.env.CLIENT || "/",
+    origin: CLIENT,
   },
 });
 
