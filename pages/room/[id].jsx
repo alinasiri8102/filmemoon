@@ -394,7 +394,7 @@ export default function Room({ user }) {
             id="media"
             type="text"
             placeholder="Media URL"
-            autoComplete="on"
+            autoComplete="off"
           />
           <input className="btn" type="submit" value="open" />
         </form>
