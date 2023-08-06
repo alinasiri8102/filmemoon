@@ -19,6 +19,7 @@ import {
   IconDeviceTvOff,
   IconBadgeCc,
 } from "@tabler/icons-react";
+import Head from "next/head";
 
 import Loading from "@/components/Loading";
 import UserCard from "@/components/UserCard";
@@ -262,181 +263,196 @@ export default function Room({ user }) {
     };
   }, [intracted]);
 
-  return !intracted ? (
-    <div className="loading flex-v">
-      <Loading fun={() => setIntracted(true)} />
-      <button
-        className="btn btn-pr connect-btn"
-        onClick={() => setIntracted(true)}
-      >
-        Connect
-      </button>
-    </div>
-  ) : (
-    <main className="roomPage fix-width" ref={playerWindow}>
-      <Toaster
-        containerStyle={{
-          zIndex: 2147483647343214,
-          top: fullscreen ? 50 : 20,
-        }}
-        toastOptions={{
-          style: {
-            background: fullscreen ? "#a4042fcc" : "#a6042e",
-            color: "#f4f3eeff",
-            fontSize: ".8em",
-          },
-        }}
-      />
+  return (
+    <>
+      <Head>
+        <title>Filmemoon | WatchParty</title>
+        <meta
+          description
+          content={`Room "${roomId}" - Join here and enjoy more :)`}
+        />
+        <meta
+          viewport
+          content="idth=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+      </Head>
+      {!intracted ? (
+        <div className="loading flex-v">
+          <Loading fun={() => setIntracted(true)} />
+          <button
+            className="btn btn-pr connect-btn"
+            onClick={() => setIntracted(true)}
+          >
+            Connect
+          </button>
+        </div>
+      ) : (
+        <main className="roomPage fix-width" ref={playerWindow}>
+          <Toaster
+            containerStyle={{
+              zIndex: 2147483647343214,
+              top: fullscreen ? 50 : 20,
+            }}
+            toastOptions={{
+              style: {
+                background: fullscreen ? "#a4042fcc" : "#a6042e",
+                color: "#f4f3eeff",
+                fontSize: ".8em",
+              },
+            }}
+          />
 
-      <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
-        <video
-          ref={player}
-          key={MediaUrl}
-          id="video"
-          poster="/img/poster.svg"
-          muted={false}
-          controls
-          autoPlay={playing}
-          onPlay={onPlay}
-          onPause={onPause}
-          onSeeking={onSeeking}
-          onLoadedData={onLoad}
-        >
-          <source ref={source} src={MediaUrl} type="video/mp4" />
-          {sub && (
-            <track
-              ref={track}
-              kind="subtitles"
-              src={sub}
-              srcLang=":)"
-              label="sub"
-              default
-            />
-          )}
-        </video>
+          <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
+            <video
+              ref={player}
+              key={MediaUrl}
+              id="video"
+              poster="/img/poster.svg"
+              muted={false}
+              controls
+              autoPlay={playing}
+              onPlay={onPlay}
+              onPause={onPause}
+              onSeeking={onSeeking}
+              onLoadedData={onLoad}
+            >
+              <source ref={source} src={MediaUrl} type="video/mp4" />
+              {sub && (
+                <track
+                  ref={track}
+                  kind="subtitles"
+                  src={sub}
+                  srcLang=":)"
+                  label="sub"
+                  default
+                />
+              )}
+            </video>
 
-        <div className="reactions flex-h">
-          <div className="emojies flex-h">
-            <button className="emoji" onClick={() => sendReact("😂")}>
-              😂
-            </button>
-            <button className="emoji" onClick={() => sendReact("🥺")}>
-              🥺
-            </button>
-            <button className="emoji" onClick={() => sendReact("😋")}>
-              😋
-            </button>
-            <button className="emoji" onClick={() => sendReact("😭")}>
-              😭
-            </button>
-            <button className="emoji" onClick={() => sendReact("🤭")}>
-              🤭
-            </button>
-            <button className="emoji" onClick={() => sendReact("😍")}>
-              😍
-            </button>
-            <button className="emoji" onClick={() => sendReact("🤬")}>
-              🤬
-            </button>
-            <button className="emoji" onClick={() => sendReact("🤮")}>
-              🤮
-            </button>
-            <button className="emoji" onClick={() => sendReact("🥱")}>
-              🥱
-            </button>
-            <button className="emoji" onClick={() => sendReact("🤯")}>
-              🤯
-            </button>
-            <button className="emoji" onClick={() => sendReact("👍")}>
-              👍
-            </button>
-            <button className="emoji" onClick={() => sendReact("👎")}>
-              👎
-            </button>
-            <button className="emoji" onClick={() => sendReact("💦")}>
-              💦
-            </button>
-            <button className="emoji" onClick={() => sendReact("❤️")}>
-              ❤️
-            </button>
-            <button className="emoji" onClick={() => sendReact("💔")}>
-              💔
-            </button>
-            <button className="emoji" onClick={() => sendReact("💩")}>
-              💩
-            </button>
+            <div className="reactions flex-h">
+              <div className="emojies flex-h">
+                <button className="emoji" onClick={() => sendReact("😂")}>
+                  😂
+                </button>
+                <button className="emoji" onClick={() => sendReact("🥺")}>
+                  🥺
+                </button>
+                <button className="emoji" onClick={() => sendReact("😋")}>
+                  😋
+                </button>
+                <button className="emoji" onClick={() => sendReact("😭")}>
+                  😭
+                </button>
+                <button className="emoji" onClick={() => sendReact("🤭")}>
+                  🤭
+                </button>
+                <button className="emoji" onClick={() => sendReact("😍")}>
+                  😍
+                </button>
+                <button className="emoji" onClick={() => sendReact("🤬")}>
+                  🤬
+                </button>
+                <button className="emoji" onClick={() => sendReact("🤮")}>
+                  🤮
+                </button>
+                <button className="emoji" onClick={() => sendReact("🥱")}>
+                  🥱
+                </button>
+                <button className="emoji" onClick={() => sendReact("🤯")}>
+                  🤯
+                </button>
+                <button className="emoji" onClick={() => sendReact("👍")}>
+                  👍
+                </button>
+                <button className="emoji" onClick={() => sendReact("👎")}>
+                  👎
+                </button>
+                <button className="emoji" onClick={() => sendReact("💦")}>
+                  💦
+                </button>
+                <button className="emoji" onClick={() => sendReact("❤️")}>
+                  ❤️
+                </button>
+                <button className="emoji" onClick={() => sendReact("💔")}>
+                  💔
+                </button>
+                <button className="emoji" onClick={() => sendReact("💩")}>
+                  💩
+                </button>
+              </div>
+
+              <div className="right flex-h">
+                <form className="chat" onSubmit={sendChat} autoComplete="off">
+                  <input
+                    type="text"
+                    name="message"
+                    placeholder="type and push enter ..."
+                  />
+                </form>
+
+                <button
+                  className="btn fullscreen-btn"
+                  onClick={() => {
+                    fullsc();
+                  }}
+                >
+                  {fullscreen ? <IconMinimize /> : <IconMaximize />}
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="right flex-h">
-            <form className="chat" onSubmit={sendChat} autoComplete="off">
+          <div className="form flex-h">
+            <form className="flex-h media" onSubmit={handleMedia}>
               <input
+                id="media"
                 type="text"
-                name="message"
-                placeholder="type and push enter ..."
+                placeholder="Media URL"
+                autoComplete="off"
               />
+              <input className="btn" type="submit" value="open" />
             </form>
 
-            <button
-              className="btn fullscreen-btn"
-              onClick={() => {
-                fullsc();
-              }}
-            >
-              {fullscreen ? <IconMinimize /> : <IconMaximize />}
-            </button>
+            <form className="flex-h sub">
+              <input
+                id="subtitle"
+                type="file"
+                text="upload"
+                title=" sdbk "
+                onChange={handleSub}
+                multiple={false}
+                name="theFiles"
+                placeholder="Upload"
+              />
+              <label className="btn" htmlFor="subtitle">
+                Subtitle
+              </label>
+            </form>
           </div>
-        </div>
-      </div>
 
-      <div className="form flex-h">
-        <form className="flex-h media" onSubmit={handleMedia}>
-          <input
-            id="media"
-            type="text"
-            placeholder="Media URL"
-            autoComplete="off"
-          />
-          <input className="btn" type="submit" value="open" />
-        </form>
-
-        <form className="flex-h sub">
-          <input
-            id="subtitle"
-            type="file"
-            text="upload"
-            title=" sdbk "
-            onChange={handleSub}
-            multiple={false}
-            name="theFiles"
-            placeholder="Upload"
-          />
-          <label className="btn" htmlFor="subtitle">
-            Subtitle
-          </label>
-        </form>
-      </div>
-
-      <div className="members">
-        <div className="head flex-v">
-          <div className="flex-h">
-            <h1>
-              Members<span className="count flex-v">{members?.length}</span>
-            </h1>
+          <div className="members">
+            <div className="head flex-v">
+              <div className="flex-h">
+                <h1>
+                  Members<span className="count flex-v">{members?.length}</span>
+                </h1>
+              </div>
+              <div className="share flex-h">
+                <p>Share Your Room "{roomId}"</p>
+                <button className="btn" onClick={() => copyText()}>
+                  <IconCopy />
+                </button>
+              </div>
+            </div>
+            <div className="members-list">
+              {members?.map((user, index) => (
+                <UserCard key={index} user={user} />
+              ))}
+            </div>
           </div>
-          <div className="share flex-h">
-            <p>Share Your Room "{roomId}"</p>
-            <button className="btn" onClick={() => copyText()}>
-              <IconCopy />
-            </button>
-          </div>
-        </div>
-        <div className="members-list">
-          {members?.map((user, index) => (
-            <UserCard key={index} user={user} />
-          ))}
-        </div>
-      </div>
-    </main>
+        </main>
+      )}
+    </>
   );
 }
 
