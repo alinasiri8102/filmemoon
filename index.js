@@ -1,20 +1,24 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
-const CLIENT = process.env.CLIENT;
-
-//New imports
-const http = require("http").Server(app);
+http = require("http");
 const cors = require("cors");
-const socketIO = require("socket.io")(http, {
-  cors: {
-    origin: CLIENT,
-  },
-});
+const { Server } = require("socket.io");
+
+const PORT = process.env.PORT || 4000;
+const CLIENT = process.env.CLIENT || "http://localhost:3000";
 
 app.use(cors());
 
-socketIO.on("connection", (socket) => {
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: CLIENT,
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
   socket.on("join", async (room, user) => {
     socket.join(room);
     socket.user = user;
@@ -65,12 +69,4 @@ socketIO.on("connection", (socket) => {
   });
 });
 
-app.get("/api", (req, res) => {
-  res.json({
-    message: "What are you doing here",
-  });
-});
-
-http.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+server.listen(PORT, () => `Server listening on ${PORT}`);
