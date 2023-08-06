@@ -4,6 +4,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState, useEffect, useRef } from "react";
 import generateUniqueId from "generate-unique-id";
 import io from "socket.io-client";
+
 import {
   IconSquareRoundedPlusFilled,
   IconDoorEnter,
@@ -33,8 +34,12 @@ export default function Home() {
   }, []);
 
   const socketInitializer = async () => {
-    await fetch(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT || "/api/socket");
-    socket = io();
+    if (process.env.NEXT_PUBLIC_SOCKET_ENDPOINT) {
+      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT, {});
+    } else {
+      await fetch("/api/socket");
+      socket = io();
+    }
 
     socket.on("check-room", (valid, id, action) => {
       if (action == "create") {

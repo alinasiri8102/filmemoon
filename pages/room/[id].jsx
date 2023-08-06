@@ -149,8 +149,12 @@ export default function Room({ user }) {
   };
 
   const socketInitializer = async () => {
-    await fetch(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT || "/api/socket");
-    socket = io();
+    if (process.env.NEXT_PUBLIC_SOCKET_ENDPOINT) {
+      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT);
+    } else {
+      await fetch("/api/socket");
+      socket = io();
+    }
 
     socket.on("connect", () => {
       user.socketId = socket.id;
@@ -238,7 +242,6 @@ export default function Room({ user }) {
           setSub();
         }
       } else {
-        console.log(data);
         setMediaUrl(data.media);
         loadSub(data.sub);
         setPlaying(data.playing);
