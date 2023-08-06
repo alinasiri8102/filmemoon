@@ -1,0 +1,187 @@
+.roomPage {
+  margin-bottom: 100px;
+  min-height: 100vh;
+
+  .player-wrapper {
+    margin-top: 50px;
+    position: relative;
+
+    video {
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+    }
+    .reactions {
+      opacity: 0.7;
+      gap: 10px;
+      padding: 10px;
+      width: 100%;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .emojies {
+        gap: 10px;
+        .emoji {
+          padding: 0;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          background-color: $bg-light;
+        }
+      }
+      .right {
+        align-items: stretch;
+        .fullscreen-btn {
+          margin-left: 5px;
+          padding: 7px;
+          background-color: $bg-light;
+          color: #817e7e;
+        }
+      }
+
+      @media screen and (max-width: 1280px) {
+        flex-direction: row-reverse;
+        .emojies {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
+        .right {
+          input {
+            padding: 5px;
+            font-size: 0.8em;
+          }
+          .fullscreen-btn {
+            padding: 0 5px;
+            svg {
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .fullscreen {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+  }
+
+  .form {
+    gap: 10px;
+    margin-top: 10px;
+    align-items: stretch;
+    form {
+      gap: 10px;
+      align-items: stretch;
+      .btn {
+        font-size: 0.8em;
+        width: 100px;
+        min-width: 60px;
+        background-color: $bg-light;
+      }
+    }
+    .media {
+      width: 100%;
+    }
+    .sub {
+      width: 100px;
+      min-width: 60px;
+      #subtitle {
+        display: none !important;
+      }
+    }
+  }
+
+  .members {
+    margin-top: 120px;
+    background-color: $bg-light;
+    padding: 50px;
+    border-radius: 10px;
+    .head {
+      align-items: center;
+      h1 {
+        text-align: center;
+        color: $white-color;
+        position: relative;
+      }
+      .count {
+        position: absolute;
+        top: 0px;
+        right: -20px;
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $white-color;
+        color: $dark-color;
+      }
+      .share {
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: $bg-light;
+        border-radius: 10px;
+        p {
+          font-size: 0.8em;
+          margin-right: 10px;
+        }
+        .btn {
+          padding: 0;
+        }
+      }
+    }
+    .members-list {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-auto-flow: row;
+      gap: 30px;
+
+      .member-card {
+        padding: 10px;
+        border: 1px solid $bg-light;
+        border-radius: 10px;
+        border-left: 5px solid $pr-color;
+        background-color: $bg-light;
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+    }
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+      .share {
+        svg {
+          width: 20px;
+          height: 20px;
+          transition: all 0.3s;
+          &:hover {
+            color: $pr-color;
+          }
+        }
+      }
+      .members-list {
+        gap: 10px;
+        .member-card {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+}
