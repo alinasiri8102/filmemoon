@@ -1,22 +1,16 @@
-const express = require("express");
-const app = express();
-http = require("http");
-const cors = require("cors");
-const { Server } = require("socket.io");
-
-const PORT = process.env.PORT || 4000;
 const CLIENT = process.env.CLIENT || "http://localhost:3000";
+const PORT = process.env.PORT || 4000;
 
-app.use(cors());
-
-const server = http.createServer(app);
-
-const io = new Server(server, {
+const app = require("express")();
+const httpServer = require("http").createServer(app);
+const options = {
   cors: {
     origin: CLIENT,
     methods: ["GET", "POST"],
+    credentials: true,
   },
-});
+};
+const io = require("socket.io")(httpServer, options);
 
 io.on("connection", (socket) => {
   socket.on("join", async (room, user) => {
@@ -69,4 +63,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => `Server listening on ${PORT}`);
+httpServer.listen(PORT);
