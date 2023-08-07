@@ -9,6 +9,8 @@ import {
   IconSquareRoundedPlusFilled,
   IconDoorEnter,
   IconExclamationCircle,
+  IconLoader,
+  IconFidgetSpinner,
 } from "@tabler/icons-react";
 let socket;
 export default function Home() {
@@ -16,13 +18,16 @@ export default function Home() {
   const router = useRouter();
   const { user } = useUser();
   const [err, setErr] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handelCreateRoom = async () => {
+    setLoading(true);
     setErr(null);
     const id = generateUniqueId({ length: 6 });
     socket.emit("check-room", id, "create");
   };
   const handelJoinRoom = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setErr(null);
     const id = inputRef.current.value;
@@ -42,6 +47,7 @@ export default function Home() {
     }
 
     socket.on("check-room", (valid, id, action) => {
+      setLoading(false);
       if (action == "create") {
         !valid
           ? router.push(`/room/${id}`)
@@ -77,7 +83,10 @@ export default function Home() {
             >
               Create Room <IconSquareRoundedPlusFilled />
             </button>
-            <span>|</span>
+
+            <span>
+              <IconFidgetSpinner className={loading && "rotating"} />
+            </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
               <input type="text" ref={inputRef} placeholder="Enter Room Id" />
               <button
