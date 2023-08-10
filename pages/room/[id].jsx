@@ -297,8 +297,8 @@ export default function Room({ user }) {
           />
 
           <div className="grid">
-            <div>
-              <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
+            <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
+              <div>
                 <video
                   ref={player}
                   key={MediaUrl}
