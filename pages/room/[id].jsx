@@ -21,25 +21,22 @@ import {
 } from "@tabler/icons-react";
 import Head from "next/head";
 
-import Loading from "@/components/Loading";
-import UserCard from "@/components/UserCard";
+import Loading from "./Loading";
+import UserCard from "./UserCard";
+import Cartoons from "./Cartoons";
 
 let socket;
 
 export default function Room({ user }) {
   const router = useRouter();
   const roomId = router.query.id;
-
   const [intracted, setIntracted] = useState(false);
-
   const [members, setMembers] = useState();
   const [fullscreen, setFullscreen] = useState(false);
-
   const [MediaUrl, setMediaUrl] = useState();
   const [sub, setSub] = useState();
   const [playing, setPlaying] = useState();
   const [position, setPosition] = useState();
-
   const player = useRef();
   const source = useRef();
   const track = useRef();
@@ -102,28 +99,33 @@ export default function Room({ user }) {
     e.target.reset();
   };
 
+  const convertSub = (content) =>
+    new Promise((converted) => {
+      content = content.replace(/(\d+:\d+:\d+)+,(\d+)/g, "$1.$2");
+      content = "WEBVTT \n\n" + content;
+      converted(content);
+    });
+
   const handleSub = (e) => {
     e.preventDefault();
     const isSub = (name) =>
-      name.split(".").pop().toLowerCase() === "srt" ||
-      name.split(".").pop().toLowerCase() === "vtt";
+      name.split(".").pop().toLowerCase() === "srt" || name.split(".").pop().toLowerCase() === "vtt";
     const file = e.target.files[0];
     if (file && isSub(file.name)) {
-      const convert = (content) =>
-        new Promise((converted) => {
-          content = content.replace(/(\d+:\d+:\d+)+,(\d+)/g, "$1.$2");
-          content = "WEBVTT \n\n" + content;
-          converted(content);
-        });
       const reader = new FileReader();
       reader.onload = function () {
         var text = reader.result;
-        convert(text).then((file) => {
+        convertSub(text).then((file) => {
           push("info", roomId, user, "sub", file);
         });
       };
       reader.readAsText(file);
     }
+  };
+
+  const loadSub = (file) => {
+    const url = URL.createObjectURL(new Blob([file], { type: "text/vtt;charset=utf-8" }));
+    setSub(url);
   };
 
   const sendReact = (message) => {
@@ -140,13 +142,6 @@ export default function Room({ user }) {
   const copyText = () => {
     navigator.clipboard.writeText(window.location);
     toast("Room URL Copied", { icon: <IconCircleCheckFilled /> });
-  };
-
-  const loadSub = (file) => {
-    const url = URL.createObjectURL(
-      new Blob([file], { type: "text/vtt;charset=utf-8" })
-    );
-    setSub(url);
   };
 
   const socketInitializer = async () => {
@@ -223,25 +218,32 @@ export default function Room({ user }) {
       } else if (type == "media") {
         setPosition(0);
         setPlaying(false);
+        setSub(null);
         if (data) {
           toast(`${user.name || user.email}`, {
             icon: <IconDeviceTv />,
           });
-          setMediaUrl(data);
         } else {
           toast(`${user.name || user.email}`, {
             icon: <IconDeviceTvOff />,
           });
-          setMediaUrl(0);
         }
+        setMediaUrl(data);
       } else if (type == "sub") {
         if (data) {
           toast(`${user.name || user.email}`, { icon: <IconBadgeCc /> });
-          loadSub(data);
         } else {
           toast(`${user.name || user.email}`, { icon: <IconBadgeCc /> });
-          setSub();
         }
+        loadSub(data);
+      } else if (type == "fromdb") {
+        setPosition(0);
+        setPlaying(false);
+        setMediaUrl(data.media);
+        loadSub(data.sub);
+        toast(`${user.name || user.email}`, {
+          icon: <IconDeviceTv />,
+        });
       } else {
         setMediaUrl(data.media);
         loadSub(data.sub);
@@ -263,26 +265,18 @@ export default function Room({ user }) {
     };
   }, [intracted]);
 
+  const emojies = ["😂", "🥺", "😋", "😭", "🤭", "😍", "🤬", "🤮", "🥱", "🤯", "👎", "💦", "❤️", "💔", "💩"];
+
   return (
     <>
       <Head>
         <title>Filmemoon | WatchParty</title>
-        <meta
-          description
-          content={`Room "${roomId}" - Join here and enjoy more :)`}
-        />
-        <meta
-          viewport
-          content="idth=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        <meta name="description" content={`Room "${roomId}" - Join here and enjoy more :)`} />
       </Head>
       {!intracted ? (
         <div className="loading flex-v">
           <Loading fun={() => setIntracted(true)} />
-          <button
-            className="btn btn-pr connect-btn"
-            onClick={() => setIntracted(true)}
-          >
+          <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
             Connect
           </button>
         </div>
@@ -302,132 +296,76 @@ export default function Room({ user }) {
             }}
           />
 
-          <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
-            <video
-              ref={player}
-              key={MediaUrl}
-              id="video"
-              poster="/img/poster.svg"
-              muted={false}
-              controls
-              autoPlay={playing}
-              onPlay={onPlay}
-              onPause={onPause}
-              onSeeking={onSeeking}
-              onLoadedData={onLoad}
-            >
-              <source ref={source} src={MediaUrl} type="video/mp4" />
-              {sub && (
-                <track
-                  ref={track}
-                  kind="subtitles"
-                  src={sub}
-                  srcLang=":)"
-                  label="sub"
-                  default
-                />
-              )}
-            </video>
+          <div className="grid">
+            <div>
+              <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
+                <video
+                  ref={player}
+                  key={MediaUrl}
+                  id="video"
+                  poster="/img/poster.svg"
+                  muted={false}
+                  controls
+                  autoPlay={playing}
+                  onPlay={onPlay}
+                  onPause={onPause}
+                  onSeeking={onSeeking}
+                  onLoadedData={onLoad}
+                >
+                  <source ref={source} src={MediaUrl} type="video/mp4" />
+                  {sub && <track ref={track} kind="subtitles" src={sub} srcLang=":)" label="sub" default />}
+                </video>
 
-            <div className="reactions flex-h">
-              <div className="emojies flex-h">
-                <button className="emoji" onClick={() => sendReact("😂")}>
-                  😂
-                </button>
-                <button className="emoji" onClick={() => sendReact("🥺")}>
-                  🥺
-                </button>
-                <button className="emoji" onClick={() => sendReact("😋")}>
-                  😋
-                </button>
-                <button className="emoji" onClick={() => sendReact("😭")}>
-                  😭
-                </button>
-                <button className="emoji" onClick={() => sendReact("🤭")}>
-                  🤭
-                </button>
-                <button className="emoji" onClick={() => sendReact("😍")}>
-                  😍
-                </button>
-                <button className="emoji" onClick={() => sendReact("🤬")}>
-                  🤬
-                </button>
-                <button className="emoji" onClick={() => sendReact("🤮")}>
-                  🤮
-                </button>
-                <button className="emoji" onClick={() => sendReact("🥱")}>
-                  🥱
-                </button>
-                <button className="emoji" onClick={() => sendReact("🤯")}>
-                  🤯
-                </button>
-                <button className="emoji" onClick={() => sendReact("👍")}>
-                  👍
-                </button>
-                <button className="emoji" onClick={() => sendReact("👎")}>
-                  👎
-                </button>
-                <button className="emoji" onClick={() => sendReact("💦")}>
-                  💦
-                </button>
-                <button className="emoji" onClick={() => sendReact("❤️")}>
-                  ❤️
-                </button>
-                <button className="emoji" onClick={() => sendReact("💔")}>
-                  💔
-                </button>
-                <button className="emoji" onClick={() => sendReact("💩")}>
-                  💩
-                </button>
+                <div className="reactions flex-h">
+                  <div className="emojies flex-h">
+                    {emojies.map((emoji, index) => (
+                      <button className="emoji" key={index} onClick={() => sendReact(emoji)}>
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="right flex-h">
+                    <form className="chat" onSubmit={sendChat} autoComplete="off">
+                      <input type="text" name="message" placeholder="type and push enter ..." />
+                    </form>
+
+                    <button
+                      className="btn fullscreen-btn"
+                      onClick={() => {
+                        fullsc();
+                      }}
+                    >
+                      {fullscreen ? <IconMinimize /> : <IconMaximize />}
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div className="right flex-h">
-                <form className="chat" onSubmit={sendChat} autoComplete="off">
-                  <input
-                    type="text"
-                    name="message"
-                    placeholder="type and push enter ..."
-                  />
+              <div className="form flex-h">
+                <form className="flex-h media" onSubmit={handleMedia}>
+                  <input id="media" type="text" placeholder="Media URL" autoComplete="off" />
+                  <input className="btn" type="submit" value="open" />
                 </form>
 
-                <button
-                  className="btn fullscreen-btn"
-                  onClick={() => {
-                    fullsc();
-                  }}
-                >
-                  {fullscreen ? <IconMinimize /> : <IconMaximize />}
-                </button>
+                <form className="flex-h sub">
+                  <input
+                    id="subtitle"
+                    type="file"
+                    text="upload"
+                    title=" sdbk "
+                    onChange={handleSub}
+                    multiple={false}
+                    name="theFiles"
+                    placeholder="Upload"
+                  />
+                  <label className="btn" htmlFor="subtitle">
+                    Subtitle
+                  </label>
+                </form>
               </div>
             </div>
-          </div>
-
-          <div className="form flex-h">
-            <form className="flex-h media" onSubmit={handleMedia}>
-              <input
-                id="media"
-                type="text"
-                placeholder="Media URL"
-                autoComplete="off"
-              />
-              <input className="btn" type="submit" value="open" />
-            </form>
-
-            <form className="flex-h sub">
-              <input
-                id="subtitle"
-                type="file"
-                text="upload"
-                title=" sdbk "
-                onChange={handleSub}
-                multiple={false}
-                name="theFiles"
-                placeholder="Upload"
-              />
-              <label className="btn" htmlFor="subtitle">
-                Subtitle
-              </label>
-            </form>
+            <Cartoons user={user} roomId={roomId} push={push} convertSub={convertSub} />
           </div>
 
           <div className="members">

@@ -1,7 +1,7 @@
 import "../style/_globals.scss";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }) {
       `}</style>
       <Head>
         <title>Filmemoon</title>
-        <meta description content="a better way to watch" />
+        <meta name="description" content="a better way to watch" />
         <meta
-          viewport
+          name="viewport"
           content="idth=device-width, initial-scale=1.0, viewport-fit=cover"
         />
       </Head>

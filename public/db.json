@@ -1,0 +1,284 @@
+{
+  "cartoons": [
+    {
+      "name": "Rick And Morty",
+      "poster": "/sub//rick-and-morty/rickandmorty.jpg",
+      "seasons": [
+        {
+          "year": "2014",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E01.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E02.720p.BluRay.PaHe.mkv",
+              "sub": ""
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E03.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E04.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E05.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E06.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E07.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E08.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E09.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e9.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E10.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e10.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S01/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S01E11.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s1/e11.srt"
+            }
+          ]
+        },
+        {
+          "year": "2015",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E01.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E02.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e2.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E03.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E04.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E05.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E06.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E07.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E08.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E09.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e9.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S02/720p%20BluRay%202CH%20x264%20Pahe/Rick.and.Morty.S02E10.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s2/e10.srt"
+            }
+          ]
+        },
+        {
+          "year": "2017",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E01.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E02.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e2.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E03.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E04.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E05.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E06.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E07.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E08.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E09.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e9.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S03/720p%20%20BluRay%20%20AAC%202CH%20%20x264%20%20Pahe/Rick.and.Morty.S03E10.720p.BluRay.PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s3/e10.srt"
+            }
+          ]
+        },
+        {
+          "year": "2020",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E01%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E02%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e2.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E03%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E04%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E05%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E06%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E07%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E08%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E09%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e9.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S04/720p%20WEB-DL%202CH%20x264%20Pahe/Rick%20and%20Morty%20S04E10%20720p%20WEB-DL%20PaHe.mkv",
+              "sub": "/sub/rick-and-morty/s4/e10.srt"
+            }
+          ]
+        },
+        {
+          "year": "2021",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E01%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E02%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e2.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E03%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E04%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E05%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E06%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E07%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E08%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E09%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e9.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/R/Rick%20And%20Morty/S05/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick%20and%20Morty%20S05E10%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/rick-and-morty/s5/e10.srt"
+            }
+          ]
+        },
+        {
+          "year": "2022",
+          "episodes": [
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E01.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e1.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E02.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e2.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E03.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e3.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E04.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e4.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E05.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e5.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E06.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e6.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E07.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e7.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E08.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e8.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E09.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e9.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E10.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/rick-and-morty/s6/e10.srt"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

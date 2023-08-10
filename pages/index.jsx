@@ -9,7 +9,6 @@ import {
   IconSquareRoundedPlusFilled,
   IconDoorEnter,
   IconExclamationCircle,
-  IconLoader,
   IconFidgetSpinner,
 } from "@tabler/icons-react";
 let socket;
@@ -49,13 +48,9 @@ export default function Home() {
     socket.on("check-room", (valid, id, action) => {
       setLoading(false);
       if (action == "create") {
-        !valid
-          ? router.push(`/room/${id}`)
-          : setErr("something very strange happened, please try again");
+        !valid ? router.push(`/room/${id}`) : setErr("something very strange happened, please try again");
       } else {
-        valid
-          ? router.push(`/room/${id}`)
-          : setErr("this room does not exists");
+        valid ? router.push(`/room/${id}`) : setErr("this room does not exists");
       }
     });
   };
@@ -66,9 +61,8 @@ export default function Home() {
         <div className="head">
           <h1>A Better Way To Watch</h1>
           <p>
-            Virtual movie night with your partner, friends, family, or
-            colleagues? We've got you covered! Gather as many people as you
-            like!
+            Virtual movie night with your partner, friends, family, or colleagues? We've got you covered! Gather as many
+            people as you like!
           </p>
         </div>
         <div className="join-room flex-v">
@@ -85,15 +79,11 @@ export default function Home() {
             </button>
 
             <span>
-              <IconFidgetSpinner className={loading && "rotating"} />
+              <IconFidgetSpinner className={loading ? "rotating" : ""} />
             </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
               <input type="text" ref={inputRef} placeholder="Enter Room Id" />
-              <button
-                className="btn btn-pr"
-                type="submit"
-                disabled={!user ? true : false}
-              >
+              <button className="btn btn-pr" type="submit" disabled={!user ? true : false}>
                 Join <IconDoorEnter />
               </button>
             </form>
@@ -108,7 +98,7 @@ export default function Home() {
       </div>
 
       <div className="vector">
-        <img src="./img/vector.svg" />
+        <img src="/img/vector.svg" />
       </div>
     </main>
   );

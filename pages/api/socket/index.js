@@ -24,9 +24,7 @@ const SocketHandler = (req, res) => {
       socket.on("disconnecting", () => {
         const theRoom = io.sockets.adapter.rooms.get(socket.room);
         if (theRoom) {
-          theRoom.members = theRoom.members.filter(
-            (obj) => obj.socketId != socket.id
-          );
+          theRoom.members = theRoom.members.filter((obj) => obj.socketId != socket.id);
           io.to(socket.room).emit("left", socket.user, theRoom.members);
         }
         socket.leave(socket.room);
@@ -44,6 +42,10 @@ const SocketHandler = (req, res) => {
         } else {
           if (type == "sub") {
             theRoom.sub = data;
+          } else if (type == "media") {
+            theRoom.sub = undefined;
+          } else if (type == "fromdb") {
+            theRoom.sub = data.sub;
           }
           io.to(room).emit("info", user, type, data);
         }
