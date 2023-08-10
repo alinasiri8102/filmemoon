@@ -6,7 +6,13 @@ $pr-color: #a6042e;
 $bg-dark: rgba($dark-color, 1);
 $bg-light: rgba(lighten($bg-dark, $amount: 20), 0.5);
 $bg-pr: rgba($pr-color, 0.7);
-
+@font-face {
+  font-family: Peyda;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/fonts/Peyda-Regular.ttf") format("truetype");
+  font-display: swap;
+}
 * {
   margin: 0;
   padding: 0;
@@ -96,8 +102,15 @@ body {
     display: none;
   }
 }
-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
+video {
+  &::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+  }
+  &::cue {
+    color: $white-color;
+    font-family: Peyda, Arial, Helvetica, sans-serif !important;
+    background-color: rgba($color: $bg-dark, $alpha: 0.7) !important;
+  }
 }
 form {
   input,

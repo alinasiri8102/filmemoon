@@ -1,6 +1,6 @@
 .roomPage {
-  margin-bottom: 100px;
-
+  margin-bottom: 120px;
+  min-height: calc(100vh - 300px);
   .grid {
     margin-top: 50px;
     display: grid;
