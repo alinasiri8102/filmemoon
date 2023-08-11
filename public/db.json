@@ -2,7 +2,7 @@
   "cartoons": [
     {
       "name": "Rick And Morty",
-      "poster": "/sub//rick-and-morty/rickandmorty.jpg",
+      "poster": "/sub/rick-and-morty/poster.jpg",
       "seasons": [
         {
           "year": "2014",
@@ -275,6 +275,175 @@
             {
               "url": "https://rio.saymyname.website/Series/R/Rick%20and%20Morty/S06/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Rick.and.Morty.S06E10.720p.10bit.WEBRip.2CH.x265.HEVC.PSA.mkv",
               "sub": "/sub/rick-and-morty/s6/e10.srt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Harley Quinn",
+      "poster": "/sub/harley-quinn/poster.jpg",
+      "seasons": [
+        {
+          "year": "2019",
+          "episodes": [
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E01%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e1.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E02%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e2.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E03%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e3.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E04%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e4.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E05%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e5.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E06%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e6.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E07%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e7.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E08%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e8.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E09%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e9.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E10%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e10.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E11%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e11.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E12%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e12.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S01/720p%20WEBRip%202CH%20x265%20PSA/Harley%20Quinn%20S01E13%20720p%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s1/e13.srt"
+            }
+          ]
+        },
+        {
+          "year": "2020",
+          "episodes": [
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E01.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e1.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E02.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e2.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E03.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e3.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E04.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e3.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E05.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e5.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E06.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e6.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E07.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e7.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E08.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e8.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E09.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e9.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E10.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e10.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E11.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e11.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E12.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e12.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S02/720p%20WEBRip%202CH%20x265%20PSA/Harley.Quinn.S02E13.720p.WEBRip.2CH.x265.HEVC.PSA.mkv",
+              "sub": "/sub/harley-quinn/s2/e13.srt"
+            }
+          ]
+        },
+        {
+          "year": "2022",
+          "episodes": [
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E01%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e1.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E02%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e2.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E03%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e3.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E04%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e4.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E05%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e5.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E06%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e6.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E07%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e7.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E08%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e8.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E09%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e9.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E010%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e10.srt"
+            },
+            {
+              "url": "https://rio.saymyname.website/Series/H/Harley%20Quinn/S03/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Harley%20Quinn%20S03E11%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/harley-quinn/s3/e11.srt"
             }
           ]
         }
