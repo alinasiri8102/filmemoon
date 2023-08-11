@@ -146,7 +146,9 @@ export default function Room({ user }) {
 
   const socketInitializer = async () => {
     if (process.env.NEXT_PUBLIC_SOCKET_ENDPOINT) {
-      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT);
+      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT, {
+        transports: { transports: ["websocket", "polling", "flashsocket"] },
+      });
     } else {
       await fetch("/api/socket");
       socket = io();
