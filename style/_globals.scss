@@ -95,7 +95,7 @@ body {
   background-color: $bg-dark;
   overflow-x: hidden;
   scroll-behavior: smooth;
-
+  position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -110,6 +110,9 @@ video {
     color: $white-color;
     font-family: Peyda, Arial, Helvetica, sans-serif !important;
     background-color: rgba($color: $bg-dark, $alpha: 0.7) !important;
+  }
+  &:focus {
+    outline: none !important;
   }
 }
 form {

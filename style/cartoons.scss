@@ -1,10 +1,10 @@
 .cartoons {
   background-color: $bg-light;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   overflow-y: scroll;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 10px;
   max-height: 521px;
   height: 41vw;
 
@@ -24,11 +24,12 @@
 
   .cartoon {
     .cartoon-head {
-      height: 80px;
+      height: 100px;
       position: relative;
 
       img,
       .overlay {
+        border: 2px solid lighten($color: $bg-light, $amount: 10);
         border-radius: 10px;
         position: absolute;
         width: 100%;

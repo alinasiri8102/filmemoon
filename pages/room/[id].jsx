@@ -18,6 +18,7 @@ import {
   IconDeviceTv,
   IconDeviceTvOff,
   IconBadgeCc,
+  IconLoader,
 } from "@tabler/icons-react";
 import Head from "next/head";
 
@@ -31,6 +32,7 @@ export default function Room({ user }) {
   const router = useRouter();
   const roomId = router.query.id;
   const [intracted, setIntracted] = useState(false);
+  const [connected, setConnected] = useState(false);
   const [members, setMembers] = useState();
   const [fullscreen, setFullscreen] = useState(false);
   const [MediaUrl, setMediaUrl] = useState();
@@ -116,7 +118,7 @@ export default function Room({ user }) {
       reader.onload = function () {
         var text = reader.result;
         convertSub(text).then((file) => {
-          push("info", roomId, user, "sub", file);
+          push("info", roomId, user, "sub", btoa(unescape(encodeURIComponent(file))));
         });
       };
       reader.readAsText(file);
@@ -124,7 +126,8 @@ export default function Room({ user }) {
   };
 
   const loadSub = (file) => {
-    const url = URL.createObjectURL(new Blob([file], { type: "text/vtt;charset=utf-8" }));
+    const sub = decodeURIComponent(escape(atob(file)));
+    const url = URL.createObjectURL(new Blob([sub], { type: "text/vtt;charset=utf-8" }));
     setSub(url);
   };
 
@@ -163,6 +166,7 @@ export default function Room({ user }) {
       setMembers(members);
       if (joined_user.socketId == socket.id) {
         toast(`You Joined`, { icon: <IconUserPlus /> });
+        setConnected(true);
       } else {
         toast(`${joined_user.name || joined_user.email}`, {
           icon: <IconUserPlus />,
@@ -275,123 +279,127 @@ export default function Room({ user }) {
         <title>Filmemoon | WatchParty</title>
         <meta name="description" content={`Room "${roomId}" - Join here and enjoy more :)`} />
       </Head>
-      {!intracted ? (
-        <div className="loading flex-v">
-          <Loading fun={() => setIntracted(true)} />
-          <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
-            Connect
-          </button>
-        </div>
-      ) : (
-        <main className="roomPage fix-width" ref={playerWindow}>
-          <Toaster
-            containerStyle={{
-              zIndex: 2147483647343214,
-              top: fullscreen ? 50 : 20,
-            }}
-            toastOptions={{
-              style: {
-                background: fullscreen ? "#a4042fcc" : "#a6042e",
-                color: "#f4f3eeff",
-                fontSize: ".8em",
-              },
-            }}
-          />
+      <main className="roomPage fix-width" ref={playerWindow}>
+        <Toaster
+          containerStyle={{
+            zIndex: 2147483647343214,
+            top: fullscreen ? 50 : 20,
+          }}
+          toastOptions={{
+            style: {
+              background: fullscreen ? "#a4042fcc" : "#a6042e",
+              color: "#f4f3eeff",
+              fontSize: ".8em",
+            },
+          }}
+        />
+        {!connected ? (
+          <div className="loading flex-v">
+            <Loading fun={() => setIntracted(true)} />
+            <div className="head flex-v">
+              <p>for better exprience use Chrome. recpect the cinema and try not to use your phone to watch movies.</p>
+              <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
+                Connect {intracted && !connected && <IconLoader className="rotating" />}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="grid">
+              <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
+                <div>
+                  <video
+                    ref={player}
+                    key={MediaUrl}
+                    id="video"
+                    poster="/img/poster.svg"
+                    muted={false}
+                    controls
+                    autoPlay={playing}
+                    onPlay={onPlay}
+                    onPause={onPause}
+                    onSeeking={onSeeking}
+                    onLoadedData={onLoad}
+                  >
+                    <source ref={source} src={MediaUrl} type="video/mp4" />
+                    {sub && <track ref={track} kind="subtitles" src={sub} srcLang=":)" label="sub" default />}
+                  </video>
 
-          <div className="grid">
-            <div className={`player-wrapper ${fullscreen && "fullscreen"}`}>
-              <div>
-                <video
-                  ref={player}
-                  key={MediaUrl}
-                  id="video"
-                  poster="/img/poster.svg"
-                  muted={false}
-                  controls
-                  autoPlay={playing}
-                  onPlay={onPlay}
-                  onPause={onPause}
-                  onSeeking={onSeeking}
-                  onLoadedData={onLoad}
-                >
-                  <source ref={source} src={MediaUrl} type="video/mp4" />
-                  {sub && <track ref={track} kind="subtitles" src={sub} srcLang=":)" label="sub" default />}
-                </video>
+                  <div className="reactions flex-h">
+                    <div className="emojies flex-h">
+                      {emojies.map((emoji, index) => (
+                        <button className="emoji" key={index} onClick={() => sendReact(emoji)}>
+                          {emoji}
+                        </button>
+                      ))}
+                    </div>
 
-                <div className="reactions flex-h">
-                  <div className="emojies flex-h">
-                    {emojies.map((emoji, index) => (
-                      <button className="emoji" key={index} onClick={() => sendReact(emoji)}>
-                        {emoji}
+                    <div className="right flex-h">
+                      <form className="chat" onSubmit={sendChat} autoComplete="off">
+                        <input type="text" name="message" placeholder="type and push enter ..." />
+                      </form>
+
+                      <button
+                        className="btn fullscreen-btn"
+                        onClick={() => {
+                          fullsc();
+                        }}
+                      >
+                        {fullscreen ? <IconMinimize /> : <IconMaximize />}
                       </button>
-                    ))}
-                  </div>
-
-                  <div className="right flex-h">
-                    <form className="chat" onSubmit={sendChat} autoComplete="off">
-                      <input type="text" name="message" placeholder="type and push enter ..." />
-                    </form>
-
-                    <button
-                      className="btn fullscreen-btn"
-                      onClick={() => {
-                        fullsc();
-                      }}
-                    >
-                      {fullscreen ? <IconMinimize /> : <IconMaximize />}
-                    </button>
+                    </div>
                   </div>
                 </div>
+
+                <div className="form flex-h">
+                  <form className="flex-h media" onSubmit={handleMedia}>
+                    <input id="media" type="text" placeholder="Media URL" autoComplete="off" />
+                    <input className="btn" type="submit" value="open" />
+                  </form>
+
+                  <form className="flex-h sub">
+                    <input
+                      id="subtitle"
+                      type="file"
+                      text="upload"
+                      title=" sdbk "
+                      onChange={handleSub}
+                      multiple={false}
+                      name="theFiles"
+                      placeholder="Upload"
+                    />
+                    <label className="btn" htmlFor="subtitle">
+                      Subtitle
+                    </label>
+                  </form>
+                </div>
               </div>
+              <Cartoons user={user} roomId={roomId} push={push} convertSub={convertSub} />
+            </div>
 
-              <div className="form flex-h">
-                <form className="flex-h media" onSubmit={handleMedia}>
-                  <input id="media" type="text" placeholder="Media URL" autoComplete="off" />
-                  <input className="btn" type="submit" value="open" />
-                </form>
-
-                <form className="flex-h sub">
-                  <input
-                    id="subtitle"
-                    type="file"
-                    text="upload"
-                    title=" sdbk "
-                    onChange={handleSub}
-                    multiple={false}
-                    name="theFiles"
-                    placeholder="Upload"
-                  />
-                  <label className="btn" htmlFor="subtitle">
-                    Subtitle
-                  </label>
-                </form>
+            <div className="members">
+              <div className="head flex-v">
+                <div className="flex-h">
+                  <h1>
+                    Members<span className="count flex-v">{members?.length}</span>
+                  </h1>
+                </div>
+                <div className="share flex-h">
+                  <p>Share Your Room "{roomId}"</p>
+                  <button className="btn" onClick={() => copyText()}>
+                    <IconCopy />
+                  </button>
+                </div>
+              </div>
+              <div className="members-list">
+                {members?.map((user, index) => (
+                  <UserCard key={index} user={user} />
+                ))}
               </div>
             </div>
-            <Cartoons user={user} roomId={roomId} push={push} convertSub={convertSub} />
-          </div>
-
-          <div className="members">
-            <div className="head flex-v">
-              <div className="flex-h">
-                <h1>
-                  Members<span className="count flex-v">{members?.length}</span>
-                </h1>
-              </div>
-              <div className="share flex-h">
-                <p>Share Your Room "{roomId}"</p>
-                <button className="btn" onClick={() => copyText()}>
-                  <IconCopy />
-                </button>
-              </div>
-            </div>
-            <div className="members-list">
-              {members?.map((user, index) => (
-                <UserCard key={index} user={user} />
-              ))}
-            </div>
-          </div>
-        </main>
-      )}
+          </>
+        )}
+      </main>
     </>
   );
 }

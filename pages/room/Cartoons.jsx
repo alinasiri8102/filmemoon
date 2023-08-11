@@ -42,14 +42,14 @@ const Cartoons = ({ user, roomId, push, convertSub }) => {
           convertSub(result).then((file) => {
             push("info", roomId, user, "fromdb", {
               media: playCartoon.url,
-              sub: file,
+              sub: btoa(unescape(encodeURIComponent(file))),
             });
           });
         });
     } else {
       push("info", roomId, user, "fromdb", {
         media: playCartoon.url,
-        sub: "",
+        sub: playCartoon.sub,
       });
     }
   };
@@ -85,7 +85,7 @@ const Cartoons = ({ user, roomId, push, convertSub }) => {
 
     return (
       <div className="cartoon-head head">
-        <h4>{cartoon.name}</h4>
+        <h5>{cartoon.name}</h5>
         <div className="overlay"></div>
         <img src={cartoon.poster} alt="" />
         <div

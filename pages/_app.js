@@ -18,10 +18,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Filmemoon</title>
         <meta name="description" content="a better way to watch" />
-        <meta
-          name="viewport"
-          content="idth=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       </Head>
       <UserProvider>
         <Header />

@@ -1,60 +1,26 @@
 "use client";
 import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import generateUniqueId from "generate-unique-id";
-import io from "socket.io-client";
 
-import {
-  IconSquareRoundedPlusFilled,
-  IconDoorEnter,
-  IconExclamationCircle,
-  IconFidgetSpinner,
-} from "@tabler/icons-react";
-let socket;
+import { IconSquareRoundedPlusFilled, IconDoorEnter, IconFidgetSpinner } from "@tabler/icons-react";
 export default function Home() {
-  const inputRef = useRef();
   const router = useRouter();
   const { user } = useUser();
-  const [err, setErr] = useState(null);
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handelCreateRoom = async () => {
     setLoading(true);
-    setErr(null);
     const id = generateUniqueId({ length: 6 });
-    socket.emit("check-room", id, "create");
+    router.push(`/room/${id}`);
   };
   const handelJoinRoom = async (e) => {
     setLoading(true);
     e.preventDefault();
-    setErr(null);
-    const id = inputRef.current.value;
-    id && socket.emit("check-room", id, "join");
-  };
-
-  useEffect(() => {
-    socketInitializer();
-  }, []);
-
-  const socketInitializer = async () => {
-    if (process.env.NEXT_PUBLIC_SOCKET_ENDPOINT) {
-      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT, {
-        transports: ["websocket", "polling", "flashsocket"],
-      });
-    } else {
-      await fetch("/api/socket");
-      socket = io();
-    }
-
-    socket.on("check-room", (valid, id, action) => {
-      if (action == "create") {
-        !valid ? router.push(`/room/${id}`) : setErr("something very strange happened, please try again");
-      } else {
-        valid ? router.push(`/room/${id}`) : setErr("this room does not exists");
-      }
-      setLoading(false);
-    });
+    const id = input;
+    router.push(`/room/${id}`);
   };
 
   return (
@@ -84,18 +50,12 @@ export default function Home() {
               <IconFidgetSpinner className={loading ? "rotating" : ""} />
             </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
-              <input type="text" ref={inputRef} placeholder="Enter Room Id" />
-              <button className="btn btn-pr" type="submit" disabled={!user ? true : false}>
+              <input type="text" onChange={(e) => setInput(e.target.value)} placeholder="Enter Room Id" />
+              <button className="btn btn-pr" type="submit" disabled={(!user ? true : false) || input.length < 6}>
                 Join <IconDoorEnter />
               </button>
             </form>
           </div>
-          {err && (
-            <div className="alert flex-h">
-              <IconExclamationCircle />
-              <p>{err}</p>
-            </div>
-          )}
         </div>
       </div>
 
