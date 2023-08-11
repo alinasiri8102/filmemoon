@@ -5,6 +5,7 @@ const SocketHandler = (req, res) => {
   } else {
     const io = new Server(res.socket.server, {
       addTrailingSlash: false,
+      credentials: true,
     });
     res.socket.server.io = io;
     io.on("connection", (socket) => {
