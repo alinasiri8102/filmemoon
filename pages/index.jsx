@@ -39,7 +39,9 @@ export default function Home() {
 
   const socketInitializer = async () => {
     if (process.env.NEXT_PUBLIC_SOCKET_ENDPOINT) {
-      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT, {});
+      socket = io(process.env.NEXT_PUBLIC_SOCKET_ENDPOINT, {
+        transports: ["websocket", "polling", "flashsocket"],
+      });
     } else {
       await fetch("/api/socket");
       socket = io();
