@@ -48,12 +48,12 @@ export default function Home() {
     }
 
     socket.on("check-room", (valid, id, action) => {
-      setLoading(false);
       if (action == "create") {
         !valid ? router.push(`/room/${id}`) : setErr("something very strange happened, please try again");
       } else {
         valid ? router.push(`/room/${id}`) : setErr("this room does not exists");
       }
+      setLoading(false);
     });
   };
 
