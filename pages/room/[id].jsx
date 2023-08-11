@@ -126,9 +126,20 @@ export default function Room({ user }) {
   };
 
   const loadSub = (file) => {
-    const sub = decodeURIComponent(escape(atob(file)));
-    const url = URL.createObjectURL(new Blob([sub], { type: "text/vtt;charset=utf-8" }));
-    setSub(url);
+    try {
+      const sub = decodeURIComponent(escape(atob(file)));
+      const url = URL.createObjectURL(new Blob([sub], { type: "text/vtt;charset=utf-8" }));
+      setSub(url);
+    } catch {
+      fetch(file)
+        .then((response) => response.text())
+        .then((result) => {
+          convertSub(result).then((file) => {
+            const url = URL.createObjectURL(new Blob([file], { type: "text/vtt;charset=utf-8" }));
+            setSub(url);
+          });
+        });
+    }
   };
 
   const sendReact = (message) => {

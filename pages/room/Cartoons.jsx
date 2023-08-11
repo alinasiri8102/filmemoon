@@ -35,23 +35,10 @@ const Cartoons = ({ user, roomId, push, convertSub }) => {
     setLocalHistory(cartoon, season, episode);
     const playCartoon = cartoons.find((c) => c.name == cartoon).seasons[season].episodes[episode];
 
-    if (playCartoon.sub) {
-      fetch(playCartoon.sub)
-        .then((response) => response.text())
-        .then((result) => {
-          convertSub(result).then((file) => {
-            push("info", roomId, user, "fromdb", {
-              media: playCartoon.url,
-              sub: btoa(unescape(encodeURIComponent(file))),
-            });
-          });
-        });
-    } else {
-      push("info", roomId, user, "fromdb", {
-        media: playCartoon.url,
-        sub: playCartoon.sub,
-      });
-    }
+    push("info", roomId, user, "fromdb", {
+      media: playCartoon.url,
+      sub: playCartoon.sub,
+    });
   };
 
   useEffect(() => {
