@@ -31,6 +31,7 @@ let socket;
 export default function Room({ user }) {
   const router = useRouter();
   const roomId = router.query.id;
+  const [isMute, setIsMute] = useState();
   const [intracted, setIntracted] = useState(false);
   const [connected, setConnected] = useState(false);
   const [members, setMembers] = useState();
@@ -271,6 +272,10 @@ export default function Room({ user }) {
   };
 
   useEffect(() => {
+    setIsMute(
+      navigator.appVersion.indexOf("like Mac") != -1 ||
+        (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1)
+    );
     if (intracted) {
       socketInitializer();
       window.onbeforeunload = function (e) {
@@ -308,9 +313,21 @@ export default function Room({ user }) {
           <div className="loading flex-v">
             <Loading fun={() => setIntracted(true)} />
             <div className="head flex-v">
-              <p>for better exprience use Chrome. recpect the cinema and try not to use your phone to watch movies.</p>
+              <p>
+                for the best exprience use Chrome.
+                <br />
+                recpect the cinema and try not to use your phone to watch movies.
+                <br />
+                note that ios and macOS does not support mkv format and your low power mode must be turned off.
+              </p>
               <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
-                Connect {intracted && !connected && <IconLoader className="rotating" />}
+                {!intracted ? (
+                  "Continue"
+                ) : (
+                  <>
+                    Connecting <IconLoader className="rotating" />
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -324,8 +341,9 @@ export default function Room({ user }) {
                     key={MediaUrl}
                     id="video"
                     poster="/img/poster.svg"
-                    muted={false}
-                    controls
+                    muted={isMute}
+                    controls={true}
+                    playsInline={true}
                     autoPlay={playing}
                     onPlay={onPlay}
                     onPause={onPause}
