@@ -318,7 +318,7 @@ export default function Room({ user }) {
                 <br />
                 recpect the cinema and try not to use your phone to watch movies.
                 <br />
-                note that ios and macOS does not support mkv format and your low power mode must be turned off.
+                note that ios and macOS does not support mkv and your low power mode must be turned off.
               </p>
               <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
                 {!intracted ? (
