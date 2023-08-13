@@ -18,26 +18,12 @@ $bg-pr: rgba($pr-color, 0.7);
   padding: 0;
   box-sizing: border-box;
   z-index: 1;
-}
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-small,
-strong,
-div,
-a,
-span,
-img {
-  color: $white-color;
   &::selection {
     background-color: $bg-pr;
     color: $white-color;
   }
 }
+
 h1,
 h2,
 h3,
@@ -46,33 +32,33 @@ h5,
 h6 {
   text-transform: capitalize;
 }
+
 h1 {
   text-align: center;
   font-size: 44px;
   svg {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
   }
   @media screen and (max-width: 768px) {
     font-size: 32px;
     svg {
-      width: 32px;
-      height: 44px;
+      width: 38px;
     }
   }
   @media screen and (max-width: 480px) {
     font-size: 24px;
     svg {
-      width: 24px;
-      height: 44px;
+      width: 30px;
     }
   }
 }
+
 p {
   text-align: justify;
   text-justify: inter-word;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 28px;
   vertical-align: middle;
 
   @media screen and (max-width: 768px) {
@@ -81,6 +67,7 @@ p {
 }
 a {
   text-decoration: none;
+  color: $white-color;
 }
 ul {
   list-style: none;
@@ -91,6 +78,7 @@ img {
 }
 html,
 body {
+  color: $white-color;
   direction: ltr;
   background-color: $bg-dark;
   overflow-x: hidden;

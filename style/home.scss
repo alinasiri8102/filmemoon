@@ -1,26 +1,27 @@
-.homePage{
+.homePage {
   height: calc(100vh - 100px);
   justify-content: space-between;
 
-  .wrapper{
+  .wrapper {
     width: 100%;
     max-width: 500px;
     gap: 50px;
 
-    .head{
-      h1{
+    .head {
+      h1 {
+        text-align: left;
         margin-bottom: 20px;
       }
     }
-    .join-room{
+    .join-room {
       gap: 10px;
-      .btns{
+      .btns {
         gap: 10px;
         justify-content: space-between;
         align-items: center;
-        .join-section{
+        .join-section {
           align-items: stretch;
-          input{
+          input {
             margin-right: 5px;
           }
         }
@@ -28,12 +29,12 @@
     }
   }
 
-  .vector{
+  .vector {
     width: 70vh;
     height: 100%;
     position: relative;
 
-    img{
+    img {
       width: 100%;
       height: auto;
       position: absolute;
@@ -42,22 +43,23 @@
     }
   }
 
-  @media screen and (max-width:1280px) {
+  @media screen and (max-width: 1280px) {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: unset;
     min-height: calc(100vh - 100px);
-    .wrapper{
+    .wrapper {
       margin: 50px 0;
-      h1,p{
+      h1,
+      p {
         text-align: center;
       }
     }
-    .vector{
+    .vector {
       max-width: 500px;
       width: 100%;
-      img{
+      img {
         position: unset;
       }
     }

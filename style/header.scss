@@ -1,8 +1,6 @@
 header {
   height: 100px;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
   z-index: 10;
 
   .pr-color {
@@ -10,9 +8,6 @@ header {
   }
   h1 {
     text-transform: unset;
-    svg {
-      color: $pr-color;
-    }
   }
 
   .profile {
@@ -25,8 +20,8 @@ header {
       border-radius: 50%;
       background-color: $bg-light;
     }
-    svg {
-      margin-bottom: -2px;
+    .logout {
+      height: 22px;
     }
     @media screen and (max-width: 480px) {
       img {
