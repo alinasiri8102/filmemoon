@@ -180,9 +180,12 @@ export default function Room({ user }) {
         toast(`You Joined`, { icon: <IconUserPlus /> });
         setConnected(true);
       } else {
-        toast(`${joined_user.name || joined_user.email}`, {
-          icon: <IconUserPlus />,
-        });
+        toast(
+          `${joined_user.given_name ? joined_user.given_name + " " + joined_user.family_name : joined_user.nickname}`,
+          {
+            icon: <IconUserPlus />,
+          }
+        );
         members[0].socketId == user.socketId &&
           push("info", roomId, user, "new_user", {
             to: joined_user,
@@ -195,18 +198,20 @@ export default function Room({ user }) {
 
     socket.on("left", (user, data) => {
       setMembers(data);
-      toast(`${user.name || user.email} Left`, { icon: <IconUserX /> });
+      toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname} Left`, {
+        icon: <IconUserX />,
+      });
     });
 
     socket.on("chat", (user, type, message) => {
       if (type == "icon") {
-        toast(user.name || user.email, {
+        toast(user.given_name ? user.given_name + " " + user.family_name : user.nickname, {
           icon: <p>{message} |</p>,
         });
       } else {
         toast(
           <div className="flex-v">
-            <small>{`${user.name || user.email}`}</small>
+            <small>{`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`}</small>
             <p>{message}</p>
           </div>,
           { icon: <IconMessages /> }
@@ -216,11 +221,13 @@ export default function Room({ user }) {
 
     socket.on("info", (user, type, data) => {
       if (type == "play") {
-        toast(`${user.name || user.email}`, { icon: <IconPlayerPlayFilled /> });
+        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+          icon: <IconPlayerPlayFilled />,
+        });
         setPlaying(true);
         player.current.play();
       } else if (type == "pause") {
-        toast(`${user.name || user.email}`, {
+        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
           icon: <IconPlayerPauseFilled />,
         });
         setPlaying(false);
@@ -228,7 +235,7 @@ export default function Room({ user }) {
         player.current.pause();
         player.current.currentTime = data.position;
       } else if (type == "seek") {
-        toast(`${user.name || user.email}`, {
+        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
           icon: <IconPlayerTrackNextFilled />,
         });
         setPosition(data.position);
@@ -238,20 +245,24 @@ export default function Room({ user }) {
         setPlaying(false);
         setSub(null);
         if (data) {
-          toast(`${user.name || user.email}`, {
+          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
             icon: <IconDeviceTv />,
           });
         } else {
-          toast(`${user.name || user.email}`, {
+          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
             icon: <IconDeviceTvOff />,
           });
         }
         setMediaUrl(data);
       } else if (type == "sub") {
         if (data) {
-          toast(`${user.name || user.email}`, { icon: <IconBadgeCc /> });
+          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+            icon: <IconBadgeCc />,
+          });
         } else {
-          toast(`${user.name || user.email}`, { icon: <IconBadgeCc /> });
+          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+            icon: <IconBadgeCc />,
+          });
         }
         loadSub(data);
       } else if (type == "fromdb") {
@@ -259,7 +270,7 @@ export default function Room({ user }) {
         setPlaying(false);
         setMediaUrl(data.media);
         loadSub(data.sub);
-        toast(`${user.name || user.email}`, {
+        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
           icon: <IconDeviceTv />,
         });
       } else {
