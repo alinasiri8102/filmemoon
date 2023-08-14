@@ -198,7 +198,7 @@ export default function Room({ user }) {
 
     socket.on("left", (user, data) => {
       setMembers(data);
-      toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname} Left`, {
+      toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
         icon: <IconUserX />,
       });
     });
