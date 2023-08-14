@@ -5,7 +5,7 @@ const UserCard = (props) => {
       <img src={user?.picture} />
       <div className="user-detail">
         <p className="name">{user?.given_name ? user.given_name + " " + user.family_name : user?.nickname}</p>
-        <small className="email">{user.email}</small>
+        <small className="email">{user?.email}</small>
       </div>
     </div>
   );
