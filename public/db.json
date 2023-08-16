@@ -448,6 +448,53 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Arcane: League of Legends",
+      "poster": "/sub/arcane/poster.webp",
+      "seasons": [
+        {
+          "year": "2021",
+          "episodes": [
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E01%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e1.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E02%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e2.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E03%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e3.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E04%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e4.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E05%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e5.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E06%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e6.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E07%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e7.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E08%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e8.srt"
+            },
+            {
+              "url": "https://nairobi.saymyname.website/Series/A/Arcane/S01/720p%20WEBRip%202CH%20x265%2010bit%20PSA/Arcane%20S01E09%20720p%2010bit%20WEBRip%202CH%20x265%20HEVC%20PSA.mkv",
+              "sub": "/sub/arcane/s1/e9.srt"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
