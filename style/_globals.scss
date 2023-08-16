@@ -162,9 +162,11 @@ button,
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   cursor: pointer;
   color: $white-color;
+  svg {
+    margin-left: 10px;
+  }
 
   &:disabled,
   &[disabled] {
@@ -174,10 +176,9 @@ button,
   @media screen and (max-width: 480px) {
     font-size: 0.8em;
     padding: 6px 8px;
-    gap: 5px;
-
     svg {
       width: 15px;
+      margin-left: 5px;
     }
   }
 }

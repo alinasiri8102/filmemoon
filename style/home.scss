@@ -5,7 +5,7 @@
   .wrapper {
     width: 100%;
     max-width: 500px;
-    gap: 50px;
+    min-width: 500px;
 
     .head {
       h1 {
@@ -14,11 +14,14 @@
       }
     }
     .join-room {
-      gap: 10px;
+      margin-top: 20px;
       .btns {
-        gap: 10px;
+        margin-top: 10px;
         justify-content: space-between;
         align-items: center;
+        .spinner {
+          margin: 0 10px;
+        }
         .join-section {
           align-items: stretch;
           input {
@@ -51,6 +54,8 @@
     min-height: calc(100vh - 100px);
     .wrapper {
       margin: 50px 0;
+      min-width: unset;
+
       h1,
       p {
         text-align: center !important;

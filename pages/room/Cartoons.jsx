@@ -109,12 +109,12 @@ const Cartoons = ({ user, roomId, push, convertSub }) => {
   };
 
   return (
-    <div className="cartoons flex-v">
+    <div className="cartoons">
       {cartoons.map((cartoon, cIndex) => (
         <div className={`cartoon ${cartoon.name == openCartoon && "open-cartoon"}`} key={cIndex}>
           {cartoonHead(cartoon)}
 
-          <div className="seasons flex-v">
+          <div className="seasons">
             {cartoon.seasons.map((season, sIndex) => (
               <div key={sIndex} className={`season ${sIndex == openSeason && "open-season"}`}>
                 <div
@@ -127,7 +127,7 @@ const Cartoons = ({ user, roomId, push, convertSub }) => {
                   <h6>{season.year && season.year}</h6>
                 </div>
 
-                <div className="episodes flex-v">
+                <div className="episodes">
                   {season.episodes.map((episode, eIndex) => (
                     <div key={eIndex} className="episode" onClick={() => handlePlay(cartoon.name, sIndex, eIndex)}>
                       <div className="episode-head head flex-h">

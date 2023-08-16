@@ -46,7 +46,7 @@ export default function Home() {
               Create Room <IconSquareRoundedPlusFilled />
             </button>
 
-            <span>
+            <span className="spinner">
               <IconFidgetSpinner className={loading ? "rotating" : ""} />
             </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
