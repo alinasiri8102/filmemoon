@@ -38,7 +38,7 @@ export default function Home() {
           <div className="btns flex-h">
             <button
               className="btn btn-pr"
-              disabled={!user ? true : false}
+              disabled={!user ? true : false || loading}
               onClick={() => {
                 handelCreateRoom();
               }}
@@ -51,7 +51,11 @@ export default function Home() {
             </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
               <input type="text" onChange={(e) => setInput(e.target.value)} placeholder="Enter Room Id" />
-              <button className="btn btn-pr" type="submit" disabled={(!user ? true : false) || input.length < 6}>
+              <button
+                className="btn btn-pr"
+                type="submit"
+                disabled={(!user ? true : false) || input.length < 6 || loading}
+              >
                 Join <IconDoorEnter />
               </button>
             </form>

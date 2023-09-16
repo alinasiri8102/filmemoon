@@ -331,12 +331,12 @@ export default function Room({ user }) {
                 <br />
                 note that ios and macOS does not support mkv and your low power mode must be turned off.
               </p>
-              <button className="btn btn-pr connect-btn" onClick={() => setIntracted(true)}>
+              <button className="btn btn-pr connect-btn" disabled={intracted} onClick={() => setIntracted(true)}>
                 {!intracted ? (
-                  "Continue"
+                  "continue"
                 ) : (
                   <>
-                    Connecting <IconLoader className="rotating" />
+                    connecting <IconLoader className="rotating" />
                   </>
                 )}
               </button>
@@ -409,7 +409,7 @@ export default function Room({ user }) {
                       placeholder="Upload"
                     />
                     <label className="btn" htmlFor="subtitle">
-                      Subtitle
+                      subtitle
                     </label>
                   </form>
                 </div>
