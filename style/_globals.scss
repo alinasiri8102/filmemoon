@@ -7,10 +7,11 @@ $bg-dark: rgba($dark-color, 1);
 $bg-light: rgba(lighten($bg-dark, $amount: 20), 0.5);
 $bg-pr: rgba($pr-color, 0.7);
 @font-face {
-  font-family: Peyda;
+  font-family: "Vazirmatn";
+  src: url("fonts/webfonts/Vazirmatn[wght].woff2") format("woff2 supports variations"),
+    url("fonts/webfonts/Vazirmatn[wght].woff2") format("woff2-variations");
+  font-weight: 100 900;
   font-style: normal;
-  font-weight: normal;
-  src: url("../public/fonts/Peyda-Regular.ttf") format("truetype");
   font-display: swap;
 }
 * {
@@ -96,7 +97,7 @@ video {
   }
   &::cue {
     color: $white-color;
-    font-family: Peyda, Arial, Helvetica, sans-serif !important;
+    font-family: Vazirmatn, Arial, Helvetica, sans-serif !important;
     background-color: rgba($color: $bg-dark, $alpha: 0.7) !important;
   }
   &:focus {
