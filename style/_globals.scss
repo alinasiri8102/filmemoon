@@ -107,6 +107,7 @@ video {
 form {
   input,
   label {
+    font-family: inherit;
     border: 1px solid transparent;
     background-color: $bg-light;
     color: darken($color: $white-color, $amount: 50);

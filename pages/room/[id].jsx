@@ -37,6 +37,7 @@ export default function Room({ user }) {
   const [members, setMembers] = useState();
   const [fullscreen, setFullscreen] = useState(false);
   const [MediaUrl, setMediaUrl] = useState();
+  const [MediaInput, setMediaInput] = useState();
   const [sub, setSub] = useState();
   const [playing, setPlaying] = useState();
   const [position, setPosition] = useState();
@@ -100,6 +101,7 @@ export default function Room({ user }) {
     const media = e.target.elements.media.value;
     push("info", roomId, user, "media", media);
     e.target.reset();
+    setMediaInput("");
   };
 
   const convertSub = (content) =>
@@ -112,7 +114,8 @@ export default function Room({ user }) {
   const handleSub = (e) => {
     e.preventDefault();
     const isSub = (name) =>
-      name.split(".").pop().toLowerCase() === "srt" || name.split(".").pop().toLowerCase() === "vtt";
+      name.split(".").pop().toLowerCase() === "srt" ||
+      name.split(".").pop().toLowerCase() === "vtt";
     const file = e.target.files[0];
     if (file && isSub(file.name)) {
       const reader = new FileReader();
@@ -181,7 +184,11 @@ export default function Room({ user }) {
         setConnected(true);
       } else {
         toast(
-          `${joined_user.given_name ? joined_user.given_name + " " + joined_user.family_name : joined_user.nickname}`,
+          `${
+            joined_user.given_name
+              ? joined_user.given_name + " " + joined_user.family_name
+              : joined_user.nickname
+          }`,
           {
             icon: <IconUserPlus />,
           }
@@ -211,7 +218,9 @@ export default function Room({ user }) {
       } else {
         toast(
           <div className="flex-v">
-            <small>{`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`}</small>
+            <small>{`${
+              user.given_name ? user.given_name + " " + user.family_name : user.nickname
+            }`}</small>
             <p>{message}</p>
           </div>,
           { icon: <IconMessages /> }
@@ -298,7 +307,23 @@ export default function Room({ user }) {
     };
   }, [intracted]);
 
-  const emojies = ["😂", "🥺", "😋", "😭", "🤭", "😍", "🤬", "🤮", "🥱", "🤯", "👎", "💦", "❤️", "💔", "💩"];
+  const emojies = [
+    "😂",
+    "🥺",
+    "😋",
+    "😭",
+    "🤭",
+    "😍",
+    "🤬",
+    "🤮",
+    "🥱",
+    "🤯",
+    "👎",
+    "💦",
+    "❤️",
+    "💔",
+    "💩",
+  ];
 
   return (
     <>
@@ -329,9 +354,14 @@ export default function Room({ user }) {
                 <br />
                 recpect the cinema and try not to use your phone to watch movies.
                 <br />
-                note that ios and macOS does not support mkv and your low power mode must be turned off.
+                note that ios and macOS does not support mkv and your low power mode must be turned
+                off.
               </p>
-              <button className="btn btn-pr connect-btn" disabled={intracted} onClick={() => setIntracted(true)}>
+              <button
+                className="btn btn-pr connect-btn"
+                disabled={intracted}
+                onClick={() => setIntracted(true)}
+              >
                 {!intracted ? (
                   "continue"
                 ) : (
@@ -362,7 +392,7 @@ export default function Room({ user }) {
                     onLoadedData={onLoad}
                   >
                     <source ref={source} src={MediaUrl} type="video/mp4" />
-                    {sub && <track ref={track} kind="subtitles" src={sub} srcLang=":)" label="sub" default />}
+                    {sub && <track ref={track} kind="subtitles" src={sub} srcLang="fa" default />}
                   </video>
 
                   <div className="reactions flex-h">
@@ -393,8 +423,19 @@ export default function Room({ user }) {
 
                 <div className="form flex-h">
                   <form className="flex-h media" onSubmit={handleMedia}>
-                    <input id="media" type="text" placeholder="Media URL" autoComplete="off" />
-                    <input className="btn" type="submit" value="open" />
+                    <input
+                      id="media"
+                      type="text"
+                      placeholder="Media URL"
+                      autoComplete="off"
+                      onChange={(e) => setMediaInput(e.target.value)}
+                    />
+                    <input
+                      className="btn"
+                      type="submit"
+                      value={MediaUrl && !MediaInput ? "stop" : "open"}
+                      disabled={!MediaInput && !MediaUrl}
+                    />
                   </form>
 
                   <form className="flex-h sub">
