@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^3.0.1",
+    "@clerk/nextjs": "^4.28.1",
     "@tabler/icons-react": "^2.30.0",
     "generate-unique-id": "^2.0.2",
     "next": "13.4.12",

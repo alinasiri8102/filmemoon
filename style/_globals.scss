@@ -8,7 +8,8 @@ $bg-light: rgba(lighten($bg-dark, $amount: 20), 0.5);
 $bg-pr: rgba($pr-color, 0.7);
 @font-face {
   font-family: "Vazirmatn";
-  src: url("../public/fonts/Vazirmatn[wght].woff2") format("woff2 supports variations"),
+  src: url("../public/fonts/Vazirmatn[wght].woff2")
+      format("woff2 supports variations"),
     url("../public/fonts/Vazirmatn[wght].woff2") format("woff2-variations");
   font-weight: 100 900;
   font-style: normal;
@@ -217,3 +218,4 @@ button,
 @import "./footer.scss";
 @import "./loading.scss";
 @import "./cartoons.scss";
+@import "./auth.scss";

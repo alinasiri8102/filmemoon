@@ -1,9 +1,10 @@
-"use client";
 import { useState, useRef, useEffect } from "react";
 import io from "socket.io-client";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
+import { getAuth, buildClerkProps } from "@clerk/nextjs/server";
+import { clerkClient } from "@clerk/nextjs";
+
 import {
   IconMaximize,
   IconMinimize,
@@ -28,7 +29,8 @@ import Cartoons from "./Cartoons";
 
 let socket;
 
-export default function Room({ user }) {
+export default function Room({ __clerk_ssr_state }) {
+  const { user } = __clerk_ssr_state;
   const router = useRouter();
   const roomId = router.query.id;
   const [isMute, setIsMute] = useState();
@@ -99,7 +101,13 @@ export default function Room({ user }) {
   const handleMedia = (e) => {
     e.preventDefault();
     const media = e.target.elements.media.value;
-    push("info", roomId, user, "media", media);
+    var isYoutube =
+      /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if (media.match(isYoutube)) {
+      toast("youtube is not supported");
+    } else {
+      push("info", roomId, user, "media", media);
+    }
     e.target.reset();
     setMediaInput("");
   };
@@ -122,7 +130,13 @@ export default function Room({ user }) {
       reader.onload = function () {
         var text = reader.result;
         convertSub(text).then((file) => {
-          push("info", roomId, user, "sub", btoa(unescape(encodeURIComponent(file))));
+          push(
+            "info",
+            roomId,
+            user,
+            "sub",
+            btoa(unescape(encodeURIComponent(file)))
+          );
         });
       };
       reader.readAsText(file);
@@ -132,14 +146,18 @@ export default function Room({ user }) {
   const loadSub = (file) => {
     try {
       const sub = decodeURIComponent(escape(atob(file)));
-      const url = URL.createObjectURL(new Blob([sub], { type: "text/vtt;charset=utf-8" }));
+      const url = URL.createObjectURL(
+        new Blob([sub], { type: "text/vtt;charset=utf-8" })
+      );
       setSub(url);
     } catch {
       fetch(file)
         .then((response) => response.text())
         .then((result) => {
           convertSub(result).then((file) => {
-            const url = URL.createObjectURL(new Blob([file], { type: "text/vtt;charset=utf-8" }));
+            const url = URL.createObjectURL(
+              new Blob([file], { type: "text/vtt;charset=utf-8" })
+            );
             setSub(url);
           });
         });
@@ -183,16 +201,9 @@ export default function Room({ user }) {
         toast(`You Joined`, { icon: <IconUserPlus /> });
         setConnected(true);
       } else {
-        toast(
-          `${
-            joined_user.given_name
-              ? joined_user.given_name + " " + joined_user.family_name
-              : joined_user.nickname
-          }`,
-          {
-            icon: <IconUserPlus />,
-          }
-        );
+        toast(user.fullName || user.nickName, {
+          icon: <IconUserPlus />,
+        });
         members[0].socketId == user.socketId &&
           push("info", roomId, user, "new_user", {
             to: joined_user,
@@ -205,22 +216,20 @@ export default function Room({ user }) {
 
     socket.on("left", (user, data) => {
       setMembers(data);
-      toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+      toast(user.fullName || user.nickName, {
         icon: <IconUserX />,
       });
     });
 
     socket.on("chat", (user, type, message) => {
       if (type == "icon") {
-        toast(user.given_name ? user.given_name + " " + user.family_name : user.nickname, {
+        toast(user.fullName || user.nickName, {
           icon: <p>{message} |</p>,
         });
       } else {
         toast(
           <div className="flex-v">
-            <small>{`${
-              user.given_name ? user.given_name + " " + user.family_name : user.nickname
-            }`}</small>
+            <small>{user.fullName || user.nickName}</small>
             <p>{message}</p>
           </div>,
           { icon: <IconMessages /> }
@@ -230,13 +239,13 @@ export default function Room({ user }) {
 
     socket.on("info", (user, type, data) => {
       if (type == "play") {
-        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+        toast(user.fullName || user.nickName, {
           icon: <IconPlayerPlayFilled />,
         });
         setPlaying(true);
         player.current.play();
       } else if (type == "pause") {
-        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+        toast(user.fullName || user.nickName, {
           icon: <IconPlayerPauseFilled />,
         });
         setPlaying(false);
@@ -244,7 +253,7 @@ export default function Room({ user }) {
         player.current.pause();
         player.current.currentTime = data.position;
       } else if (type == "seek") {
-        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+        toast(user.fullName || user.nickName, {
           icon: <IconPlayerTrackNextFilled />,
         });
         setPosition(data.position);
@@ -254,22 +263,22 @@ export default function Room({ user }) {
         setPlaying(false);
         setSub(null);
         if (data) {
-          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+          toast(user.fullName || user.nickName, {
             icon: <IconDeviceTv />,
           });
         } else {
-          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+          toast(user.fullName || user.nickName, {
             icon: <IconDeviceTvOff />,
           });
         }
         setMediaUrl(data);
       } else if (type == "sub") {
         if (data) {
-          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+          toast(user.fullName || user.nickName, {
             icon: <IconBadgeCc />,
           });
         } else {
-          toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+          toast(user.fullName || user.nickName, {
             icon: <IconBadgeCc />,
           });
         }
@@ -279,7 +288,7 @@ export default function Room({ user }) {
         setPlaying(false);
         setMediaUrl(data.media);
         loadSub(data.sub);
-        toast(`${user.given_name ? user.given_name + " " + user.family_name : user.nickname}`, {
+        toast(user.fullName || user.nickName, {
           icon: <IconDeviceTv />,
         });
       } else {
@@ -294,7 +303,8 @@ export default function Room({ user }) {
   useEffect(() => {
     setIsMute(
       navigator.appVersion.indexOf("like Mac") != -1 ||
-        (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1)
+        (navigator.userAgent.indexOf("Safari") != -1 &&
+          navigator.userAgent.indexOf("Chrome") == -1)
     );
     if (intracted) {
       socketInitializer();
@@ -329,7 +339,10 @@ export default function Room({ user }) {
     <>
       <Head>
         <title>Filmemoon | WatchParty</title>
-        <meta name="description" content={`Room "${roomId}" - Join here and enjoy more :)`} />
+        <meta
+          name="description"
+          content={`Room "${roomId}" - Join here and enjoy more :)`}
+        />
       </Head>
       <main className="roomPage fix-width" ref={playerWindow}>
         <Toaster
@@ -352,10 +365,11 @@ export default function Room({ user }) {
               <p>
                 for the best exprience use Chrome.
                 <br />
-                recpect the cinema and try not to use your phone to watch movies.
+                recpect the cinema and try not to use your phone to watch
+                movies.
                 <br />
-                note that ios and macOS does not support mkv and your low power mode must be turned
-                off.
+                note that ios and macOS does not support mkv and your low power
+                mode must be turned off.
               </p>
               <button
                 className="btn btn-pr connect-btn"
@@ -392,21 +406,41 @@ export default function Room({ user }) {
                     onLoadedData={onLoad}
                   >
                     <source ref={source} src={MediaUrl} type="video/mp4" />
-                    {sub && <track ref={track} kind="subtitles" src={sub} srcLang="fa" default />}
+                    {sub && (
+                      <track
+                        ref={track}
+                        kind="subtitles"
+                        src={sub}
+                        srcLang="fa"
+                        default
+                      />
+                    )}
                   </video>
 
                   <div className="reactions flex-h">
                     <div className="emojies flex-h">
                       {emojies.map((emoji, index) => (
-                        <button className="emoji" key={index} onClick={() => sendReact(emoji)}>
+                        <button
+                          className="emoji"
+                          key={index}
+                          onClick={() => sendReact(emoji)}
+                        >
                           {emoji}
                         </button>
                       ))}
                     </div>
 
                     <div className="right flex-h">
-                      <form className="chat" onSubmit={sendChat} autoComplete="off">
-                        <input type="text" name="message" placeholder="type and push enter ..." />
+                      <form
+                        className="chat"
+                        onSubmit={sendChat}
+                        autoComplete="off"
+                      >
+                        <input
+                          type="text"
+                          name="message"
+                          placeholder="type and push enter ..."
+                        />
                       </form>
 
                       <button
@@ -433,7 +467,7 @@ export default function Room({ user }) {
                     <input
                       className="btn"
                       type="submit"
-                      value={MediaUrl && !MediaInput ? "stop" : "open"}
+                      value={MediaUrl && !MediaInput ? "Stop" : "Open"}
                       disabled={!MediaInput && !MediaUrl}
                     />
                   </form>
@@ -450,19 +484,25 @@ export default function Room({ user }) {
                       placeholder="Upload"
                     />
                     <label className="btn" htmlFor="subtitle">
-                      subtitle
+                      Subtitle
                     </label>
                   </form>
                 </div>
               </div>
-              <Cartoons user={user} roomId={roomId} push={push} convertSub={convertSub} />
+              <Cartoons
+                user={user}
+                roomId={roomId}
+                push={push}
+                convertSub={convertSub}
+              />
             </div>
 
             <div className="members">
               <div className="head flex-v">
                 <div className="flex-h">
                   <h1>
-                    Members<span className="count flex-v">{members?.length}</span>
+                    Members
+                    <span className="count flex-v">{members?.length}</span>
                   </h1>
                 </div>
                 <div className="share flex-h">
@@ -485,4 +525,22 @@ export default function Room({ user }) {
   );
 }
 
-export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = async (ctx) => {
+  const { userId } = getAuth(ctx.req);
+  const fullUser = userId ? await clerkClient.users.getUser(userId) : undefined;
+
+  if (userId) {
+    const user = {
+      fullName: `${fullUser.firstName}${
+        fullUser.lastName ? " " + fullUser.lastName : ""
+      }`,
+      emailAddress: fullUser.emailAddresses[0].emailAddress,
+      imageUrl: fullUser.imageUrl,
+      nickName: fullUser.emailAddresses[0].emailAddress.split("@")[0],
+    };
+
+    // Load any data your application needs for the page using the userId
+    return { props: { ...buildClerkProps(ctx.req, { user }) } };
+  }
+  return null;
+};

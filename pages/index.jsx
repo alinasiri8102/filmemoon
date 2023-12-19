@@ -1,13 +1,16 @@
-"use client";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 import generateUniqueId from "generate-unique-id";
+import { getAuth, buildClerkProps } from "@clerk/nextjs/server";
 
-import { IconSquareRoundedPlusFilled, IconDoorEnter, IconFidgetSpinner } from "@tabler/icons-react";
-export default function Home() {
+import {
+  IconSquareRoundedPlusFilled,
+  IconDoorEnter,
+  IconFidgetSpinner,
+} from "@tabler/icons-react";
+
+export default function Home({ isSignedIn }) {
   const router = useRouter();
-  const { user } = useUser();
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -29,16 +32,17 @@ export default function Home() {
         <div className="head">
           <h1>A Better Way To Watch</h1>
           <p>
-            Virtual movie night with your partner, friends, family, or colleagues? We've got you covered! Gather as many
-            people as you like!
+            Virtual movie night with your partner, friends, family, or
+            colleagues? We've got you covered! Gather as many people as you
+            like!
           </p>
         </div>
         <div className="join-room flex-v">
-          {!user && <p className="alert">Please Login To Continue</p>}
+          {!isSignedIn && <p className="alert">Please Login To Continue</p>}
           <div className="btns flex-h">
             <button
               className="btn btn-pr"
-              disabled={!user ? true : false || loading}
+              disabled={!isSignedIn ? true : false || loading}
               onClick={() => {
                 handelCreateRoom();
               }}
@@ -50,11 +54,17 @@ export default function Home() {
               <IconFidgetSpinner className={loading ? "rotating" : ""} />
             </span>
             <form className="join-section flex-h" onSubmit={handelJoinRoom}>
-              <input type="text" onChange={(e) => setInput(e.target.value)} placeholder="Enter Room Id" />
+              <input
+                type="text"
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter Room Id"
+              />
               <button
                 className="btn btn-pr"
                 type="submit"
-                disabled={(!user ? true : false) || input.length < 6 || loading}
+                disabled={
+                  (!isSignedIn ? true : false) || input.length < 6 || loading
+                }
               >
                 Join <IconDoorEnter />
               </button>
@@ -69,3 +79,13 @@ export default function Home() {
     </main>
   );
 }
+
+export const getServerSideProps = async (ctx) => {
+  const { userId } = getAuth(ctx.req);
+
+  if (userId) {
+    // Load any data your application needs for the page using the userId
+    return { props: { ...buildClerkProps(ctx.req), isSignedIn: true } };
+  }
+  return { props: { isSignedIn: false } };
+};
