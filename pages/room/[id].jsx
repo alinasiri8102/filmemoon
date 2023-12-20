@@ -201,7 +201,7 @@ export default function Room({ __clerk_ssr_state }) {
         toast(`You Joined`, { icon: <IconUserPlus /> });
         setConnected(true);
       } else {
-        toast(user.fullName || user.nickName, {
+        toast(joined_user.fullName || joined_user.nickName, {
           icon: <IconUserPlus />,
         });
         members[0].socketId == user.socketId &&
@@ -232,7 +232,9 @@ export default function Room({ __clerk_ssr_state }) {
             <small>{user.fullName || user.nickName}</small>
             <p>{message}</p>
           </div>,
-          { icon: <IconMessages /> }
+          {
+            icon: <IconMessages />,
+          }
         );
       }
     });
